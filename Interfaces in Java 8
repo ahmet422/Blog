@@ -1,0 +1,23 @@
+Lambda:
+Java 8 brought a powerful new syntactic improvement in the form of lambda expressions. A lambda is an anonymous function that we can handle as a first-class language citizen. For instance, we can pass it to or return it from a method.
+
+
+1 @FunctionalInterface annotation:
+  allows a compiler to generate an error if the annotated interface does not satisfy the conditions.
+  
+2 Any interface with a SAM(Single Abstract Method) is a functional interface, and its implementation may be treated as lambda expression
+Java 8's default methods are not abstract and do not count; a functional interface may still have multiple default methods. 
+
+Java SE 8 included four main kinds of functional interfaces which can be applied in multiple situations. These are:
+
+
+
+                     Arguments            Returns                     Variants                                                 Examples                                                                                                    Method(s)
+1) Consumer             1                 nothing            DoubleConsumer, IntConsumer, LongConsumer            Consumer<Integer> consumer = (value) -> System.out.println(value);                                                       accept() 
+   BiConsumer           2                 nothing
+2) Predicate            1                 boolean            DoublePredicate, IntPredicate, LongPredicate         public interface Predicate<T> {boolean test(T t);},  Predicate predicate = (value) -> value != null;                      test()
+   BiPredicate          2                 boolean
+3) Function             1                     1              UnaryOperator                                                                                                                                                                  apply()
+   Bifunction           2                     1              BinaryOperator                                       @FunctionalInterface public interface BinaryOperator<T> extends BiFunction<T, U, R> {}
+4) Supplier             0                     1              BooleanSupplier, DoubleSupplier, LongSupplier, and IntSupplier                                                                                                                 get()
+    *Generally used for lazy generation of values     
